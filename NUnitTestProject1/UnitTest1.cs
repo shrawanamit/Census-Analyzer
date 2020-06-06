@@ -13,7 +13,8 @@ namespace NUnitTestProject1
         }
 
         public static string CENSUS_CSV_FILE_PATH = @"G:\vs\CensusAnalyser\NUnitTestProject1\IndiaStateCensusData.csv";
-        public static string WRONG_CSV_FILE_PATH = @"IndiaStateCensusData.csv";
+        public static string WRONG_CSV_FILE_PATH = @"G:\vs\CensusAnalyser\CensusAnalyser\CensusAnalyserManager\IndiaStateCensusData.csv";
+        public static string CENSUS_CSV_FILE_PATH_Wrong_Type = @"G:\vs\CensusAnalyser\NUnitTestProject1\IndiaStateCensusData.txt";
 
         //cheaing no of records
         [Test]
@@ -24,7 +25,7 @@ namespace NUnitTestProject1
         }
 
         [Test]
-        public void GivenEmptyFile_ShouldReturn_CustomException()
+        public void GivenWrongCSVFilePath_ShouldReturn_CustomException()
         {
             try
             {
@@ -32,7 +33,19 @@ namespace NUnitTestProject1
             }
             catch (CensusAnalyzerException e)
             {
-                Assert.AreEqual(CensusAnalyzerException.ExceptionType.WRONG_CSV_FILE_PATH, e.EType);
+                Assert.AreEqual(CensusAnalyzerException.ExceptionType.FILE_NOT_FOUND, e.EType);
+            }
+        }
+        [Test]
+        public void GivenWrongCSVFiletype_ShouldReturn_CustomException()
+        {
+            try
+            {
+                DataTable csvData = CensusAnalyserManager.LoadCensusData(CENSUS_CSV_FILE_PATH_Wrong_Type);
+            }
+            catch (CensusAnalyzerException e)
+            {
+                Assert.AreEqual(CensusAnalyzerException.ExceptionType.WRONG_CSV_FILE_PATH_TYPE, e.EType);
             }
         }
 

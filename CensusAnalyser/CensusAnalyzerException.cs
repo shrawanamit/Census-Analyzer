@@ -10,8 +10,8 @@ namespace CensusAnalyser
 
         public enum ExceptionType
         {
-            EMPTY_FILE, WRONG_CSV_FILE_PATH,
-            WRONG_DELIMETER, INVALID_CENSUS_DATA
+            EMPTY_FILE, WRONG_CSV_FILE_PATH, WRONG_CSV_FILE_PATH_TYPE,
+            WRONG_DELIMETER, INVALID_CENSUS_DATA, FILE_NOT_FOUND
         }
         public ExceptionType EType;
 
