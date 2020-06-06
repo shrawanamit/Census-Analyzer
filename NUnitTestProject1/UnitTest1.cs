@@ -23,5 +23,18 @@ namespace NUnitTestProject1
             Assert.AreEqual(29, csvData.Rows.Count);
         }
 
+        [Test]
+        public void GivenEmptyFile_ShouldReturn_CustomException()
+        {
+            try
+            {
+                DataTable csvData = CensusAnalyserManager.LoadCensusData(WRONG_CSV_FILE_PATH);
+            }
+            catch (CensusAnalyzerException e)
+            {
+                Assert.AreEqual(CensusAnalyzerException.ExceptionType.WRONG_CSV_FILE_PATH, e.EType);
+            }
+        }
+
     }
 }

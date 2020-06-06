@@ -4,13 +4,13 @@ using System.Runtime.Serialization;
 namespace CensusAnalyser
 {
     [Serializable]
-    internal class CensusAnalyzerException : Exception
+    public class CensusAnalyzerException : Exception
     {
        
 
         public enum ExceptionType
         {
-            EMPTY_FILE, FILE_NOT_FOUND,
+            EMPTY_FILE, WRONG_CSV_FILE_PATH,
             WRONG_DELIMETER, INVALID_CENSUS_DATA
         }
         public ExceptionType EType;
